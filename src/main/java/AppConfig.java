@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 public class AppConfig {
     private static final Logger logger = LogManager.getLogger(AppConfig.class);
     private static final AppConfig INSTANCE = new AppConfig();
-
     private final String dbUrl;
     private final String dbUser;
     private final String dbPassword;
@@ -26,7 +25,7 @@ public class AppConfig {
                 throw new ConfigurationException("Erforderliche Datenbankkonfigurationen fehlen in db.properties");
             }
         } catch (IOException e) {
-            logger.error("Fehler beim Laden der Konfigurationsdatei db.properties! {}", e.getMessage());
+            logger.error("Fehler beim Laden der Konfigurationsdatei: {}", e.getMessage());
             throw new ConfigurationException("Fehler beim Laden der Konfigurationsdatei db.properties", e);
         }
     }
